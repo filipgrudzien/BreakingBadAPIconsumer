@@ -18,33 +18,7 @@
 
 <div id="wrap">
     <div id="main" class="container clear-top">
-        <div class="justify-content-center row">
-            <div class="usercols col-sm-12 col-md-12 col-lg-12">
-                <div class="appnamedisplay input-group text-center">
-                    <img class="appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
-                    <p class="appname">Breaking Bad Quotes</p>
-                    <img class="appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
-                </div>
-                <div class="input-group text-center">
-                    <form action="#" th:action="@{/quotes/result}" class="form-field" th:object="${quotehelper}" method="post">
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">Number of quotes</span>
-                            </div>
-                            <input type="number" class="form-control" th:field="*{quoteNumber}">
-                        </div>
-
-                        <div class="validators rounded">
-                            <p th:if="${#fields.hasErrors('quoteNumber')}" th:errors="*{quoteNumber}">Number of quotes error</p>
-                        </div>
-
-                        <input class="resultbutton btn btn-primary" type="submit" value="Find quotes!"/>
-
-                    </form>
-                </div>
-            </div>
-        </div>
+       result loaded successfully
     </div>
 </div>
 

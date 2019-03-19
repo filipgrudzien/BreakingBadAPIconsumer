@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Permanent+Marker|Cinzel:700|Kalam|Tinos|Varela+Round|Bree+Serif');
+
+.updowncolors {
+    background-color: #343a40;
+}
+
+.centred-content {
+    position: relative;
+    text-align:center;
+    align-items: center;
+    display: inline-block;
+    justify-content: center;
+}
+
+.footer-font {
+    color: white;
+}
+
+.socialtitle{
+    padding-top: 15px;
+    font-size: 22px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+.social {
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.for-buttons {
+    color: black;
+}
+
+.form-field {
+    margin: 0 auto;
+    position: relative;
+}
+
+.resultbutton {
+    background: #e66465 !important;
+}
+
+.appname {
+    font-family: 'Bree Serif', serif;
+    font-size: 40px;
+}
+
+.appnamedisplay {
+    display: inline;
+}
+
+.appimg {
+    width: 100px;
+    height: 100px;
+}
