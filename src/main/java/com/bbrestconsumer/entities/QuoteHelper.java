@@ -1,8 +1,8 @@
 package com.bbrestconsumer.entities;
 
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
 
-import javax.persistence.Entity;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 

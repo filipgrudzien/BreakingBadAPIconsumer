@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MainController {
 
-    /*@Autowired
-    private QuoteHelper quoteHelper;*/
+    @Autowired
+    private QuoteHelper quoteHelper;
 
     @RequestMapping("/")
     public String showMainPage(Model model){

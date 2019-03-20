@@ -38,15 +38,21 @@
 
 .resultbutton {
     background: #e66465 !important;
+    margin: 0px 0px 30px 0px;
 }
 
 .appname {
     font-family: 'Bree Serif', serif;
+    margin: 0px;
     font-size: 40px;
 }
 
 .appnamedisplay {
-    display: inline;
+    margin: 35px 0px 0px 0px;
+}
+
+.appimgdisplay {
+    margin: 25px 0px 0px 0px;
 }
 
 .appimg {

@@ -1,5 +1,6 @@
 package com.bbrestconsumer;
 
+import com.bbrestconsumer.entities.QuoteHelper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,12 +14,15 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan(basePackages={"com.bbrestconsumer"})
 public class Application {
 
-    /*@Bean
+    @Bean
     RestTemplate restTemplate() {
         return new RestTemplate();
-    }*/
+    }
 
-    //https://github.com/shevabam/breaking-bad-quotes
+	@Bean
+	QuoteHelper quoteHelper() {
+		return new QuoteHelper();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
