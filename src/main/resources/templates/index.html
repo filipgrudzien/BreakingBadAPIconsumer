@@ -33,7 +33,7 @@
         <div class="justify-content-center appnamedisplay row">
             <div class="text-center col-sm-12 col-md-12 col-lg-12">
                 <div class="input-group text-center">
-                    <form action="#" th:action="@{/quotes/result}" class="form-field" th:object="${quotehelper}"
+                    <form action="#" th:action="@{quotes/result/{qNumber}(qNumber=${quotehelper.quoteNumber})}" class="form-field" th:object="${quotehelper}"
                           method="post">
 
                         <div class="input-group mb-3">

@@ -1,8 +1,10 @@
 package com.bbrestconsumer.controllers;
 
+import com.bbrestconsumer.services.BreakingBadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -13,9 +15,13 @@ public class BreakingBadController {
     @Autowired
     private RestTemplate restTemplate;
 
-    @RequestMapping("result")
-    public String showResultsFromAPI(Model model){
-        return "api-result";
+    @Autowired
+    private BreakingBadService breakingBadService;
+
+    @RequestMapping(value = "/result/{quoteNumber}")
+    public String showResultsFromAPI(@PathVariable int quoteNumber, Model model){
+        breakingBadService.processRestResponse(restTemplate, quoteNumber);
+        return "redirect:/";
     }
 
 }
