@@ -11,6 +11,7 @@ public class QuoteHelper {
     @Max(value = 200, message = "Value is over 200!")
     public int quoteNumber = 1;
 
+    public boolean checkIfCorrect = true;
 
     public QuoteHelper() {};
 }

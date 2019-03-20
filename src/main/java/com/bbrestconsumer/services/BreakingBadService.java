@@ -6,6 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class BreakingBadService {
@@ -16,13 +17,11 @@ public class BreakingBadService {
         return (basicURL+Integer.toString(quoteNumber));
     }
 
-    public void processRestResponse(RestTemplate restTemplate, int quoteNumber){
+    public List<BreakingBadQuote> processRestResponse(RestTemplate restTemplate, int quoteNumber){
         String urlForRest = obtainDesiredURL(quoteNumber);
         BreakingBadQuote[] response = restTemplate.getForObject(urlForRest, BreakingBadQuote[].class);
         ArrayList<BreakingBadQuote> arrayList = new ArrayList<BreakingBadQuote>(Arrays.asList(response));
-        for (BreakingBadQuote bbq : arrayList) {
-            System.out.println(bbq);
-        }
+        return arrayList;
     }
 
 }

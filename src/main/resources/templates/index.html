@@ -36,7 +36,7 @@
                     <form action="#" th:action="@{/result}" class="form-field" th:object="${quotehelper}"
                           method="post">
 
-                        <div class="input-group mb-3">
+                        <div class="shadow input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Number of quotes</span>
                             </div>
@@ -44,18 +44,40 @@
                         </div>
 
                         <div class="validators rounded">
-                            <p th:if="${#fields.hasErrors('quoteNumber')}" th:errors="*{quoteNumber}">Number of quotes
-                                error</p>
+                            <p th:if="${quotehelper.checkIfCorrect} == false">Number of quotes lower than 1 or higher than 200!</p>
                         </div>
 
-                        <input class="resultbutton btn btn-primary" type="submit" value="Find quotes!"/>
+                        <input class="shadow resultbutton btn" type="submit" value="Find quotes!"/>
 
                     </form>
                 </div>
             </div>
         </div>
+        <div class="result-panel rounded shadow justify-content-center appnamedisplay row" th:if="${#lists.size(quotelist) >= 1}">
+            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
+            <div class="text-center col-sm-8 col-md-8 col-lg-8">
+                <div class="input-group text-center" th:each="bqoute: ${quotelist}">
+                    <div class="single-result Row">
+                        <div class="rounded Col MiddleCenter">
+                            <img class="rounded appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
+                        </div>
+                        <div class="quote-panel Col MiddleCenterValues">
+                            <p class="props-name">QUOTE</p>
+                            <p class="props-value" th:text="${bqoute.quote}"></p>
+                            <p class="props-name">AUTHOR</p>
+                            <p class="props-value" th:text="${bqoute.author}"></p>
+                        </div>
+
+                        <!-- https://www.sitepoint.com/jquery-pagination-plugins/ -->
+
+                    </div>
+                </div>
+            </div>
+            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
+        </div>
     </div>
 </div>
+
 
 <footer class="page-footer font-small text-center updowncolors">
     <div class="text-center centred-content">
