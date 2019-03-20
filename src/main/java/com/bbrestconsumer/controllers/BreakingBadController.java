@@ -1,16 +1,18 @@
 package com.bbrestconsumer.controllers;
 
+import com.bbrestconsumer.entities.QuoteHelper;
 import com.bbrestconsumer.services.BreakingBadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.Valid;
+
 @Controller
-@RequestMapping("/quotes")
 public class BreakingBadController {
 
     @Autowired
@@ -19,14 +21,13 @@ public class BreakingBadController {
     @Autowired
     private BreakingBadService breakingBadService;
 
-    /*@RequestMapping(value = "/result/{quoteNumber}")
-    public String showResultsFromAPI(@PathVariable int quoteNumber, Model model){
-        breakingBadService.processRestResponse(restTemplate, quoteNumber);
-        return "redirect:/";
-    }*/
+    @RequestMapping(value = "/result")
+    public String showResultsFromAPI(@Valid QuoteHelper helper, Errors errors, @RequestParam(value="quoteNumber") int quoteNumber, Model model){
 
-    @RequestMapping(value = "/result/")
-    public String showResultsFromAPI(@RequestParam(value="quoteNumber") int quoteNumber, Model model){
+        if(errors.hasErrors()){
+            return "redirect:/";
+        }
+
         breakingBadService.processRestResponse(restTemplate, quoteNumber);
         return "redirect:/";
     }
