@@ -17,7 +17,6 @@ public class BreakingBadService {
     }
 
     public void processRestResponse(RestTemplate restTemplate, int quoteNumber){
-
         String urlForRest = obtainDesiredURL(quoteNumber);
         BreakingBadQuote[] response = restTemplate.getForObject(urlForRest, BreakingBadQuote[].class);
         ArrayList<BreakingBadQuote> arrayList = new ArrayList<BreakingBadQuote>(Arrays.asList(response));
