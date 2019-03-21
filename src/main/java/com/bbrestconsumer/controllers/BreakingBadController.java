@@ -39,6 +39,8 @@ public class BreakingBadController {
 
         ModelAndView mav = new ModelAndView();
 
+        int elemPerPage = 5; //hard-coded examle yet
+
         if(errors.hasErrors()){
             mav.setViewName("index");
             helper.setCorrectParameters(false);
@@ -50,8 +52,8 @@ public class BreakingBadController {
             breakingBadService.retrieveRestData(restTemplate, quoteNumber);
         }
 
-        PageRequest pageable = PageRequest.of(page - 1, 5);
-        Page<BreakingBadQuote> quotePage = breakingBadService.getPaginatedQuotes(pageable);
+        PageRequest pageable = PageRequest.of(page - 1, elemPerPage);
+        Page<BreakingBadQuote> quotePage = breakingBadService.getPaginatedQuotes(pageable, page-1, elemPerPage);
 
         int totalPages = quotePage.getTotalPages();
         if(totalPages > 0) {

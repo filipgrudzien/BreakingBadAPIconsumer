@@ -31,14 +31,29 @@ public class BreakingBadService {
         listForPagination = arrayList;
     }
 
-    public Page<BreakingBadQuote> getPaginatedQuotes(Pageable pageable){
-        return new PageImpl<BreakingBadQuote>(listForPagination, pageable, listForPagination.size());
+    public Page<BreakingBadQuote> getPaginatedQuotes(Pageable pageable, int page, int elemPerPage) {
+        int pageSize = elemPerPage;
+        int currentPage = page;
+        int startItem = currentPage * pageSize;
+        List<BreakingBadQuote> list;
+
+        if (listForPagination.size() < startItem) {
+            list = Collections.emptyList();
+        } else {
+            int toIndex = Math.min(startItem + pageSize, listForPagination.size());
+            list = listForPagination.subList(startItem, toIndex);
+        }
+
+        Page<BreakingBadQuote> quotePage
+                = new PageImpl<BreakingBadQuote>(list, PageRequest.of(currentPage, pageSize), listForPagination.size());
+
+        return quotePage;
     }
 
-    public boolean checkIfDataRetrieved(){
-        if(listForPagination != null ){
+    public boolean checkIfDataRetrieved() {
+        if (listForPagination != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
