@@ -1,6 +1,7 @@
 package com.bbrestconsumer.services;
 
 import com.bbrestconsumer.entities.BreakingBadQuote;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
