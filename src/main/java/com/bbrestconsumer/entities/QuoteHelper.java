@@ -11,7 +11,13 @@ public class QuoteHelper {
     @Max(value = 200, message = "Value is over 200!")
     public int quoteNumber = 1;
 
-    public boolean checkIfCorrect = true;
+    @Min(value = 5, message = "Value is lower than 5!")
+    @Max(value = 15, message = "Value is over 15!")
+    public int elemPerPage = 5;
+
+    public int initPage = 1;
+
+    public boolean correctParameters = true;
 
     public QuoteHelper() {};
 }

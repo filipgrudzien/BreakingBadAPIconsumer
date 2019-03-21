@@ -18,9 +18,41 @@
 
 <div id="wrap">
     <div id="main" class="container clear-top">
-       result loaded successfully
+        <div class="result-panel rounded shadow justify-content-center appnamedisplay row">
+            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
+            <div class="text-center col-sm-8 col-md-8 col-lg-8">
+                <div class="input-group text-center" th:each="bquote: ${quotelist}">
+                    <div class="single-result Row">
+                        <div class="rounded Col MiddleCenter">
+                            <img class="rounded appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
+                        </div>
+                        <div class="quote-panel Col MiddleCenterValues">
+                            <p class="props-name">QUOTE</p>
+                            <p class="props-value" th:text="${bquote.quote}"></p>
+                            <p class="props-name">AUTHOR</p>
+                            <p class="props-value" th:text="${bquote.author}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
+        </div>
+        <div class="result-panel rounded shadow justify-content-center appnamedisplay row">
+            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
+            <div class="text-center col-sm-8 col-md-8 col-lg-8">
+                <nav aria-label="Pagination">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                            <a class="page-link" th:href="@{|/result/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
+        </div>
     </div>
 </div>
+
 
 <footer class="page-footer font-small text-center updowncolors">
     <div class="text-center centred-content">
@@ -37,6 +69,7 @@
         <p class="footer-font">© 2019 Copyright: Filip Grudzień.</p>
     </div>
 </footer>
+
 
 </body>
 </html>

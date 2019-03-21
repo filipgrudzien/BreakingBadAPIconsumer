@@ -33,18 +33,31 @@
         <div class="justify-content-center appnamedisplay row">
             <div class="text-center col-sm-12 col-md-12 col-lg-12">
                 <div class="input-group text-center">
-                    <form action="#" th:action="@{/result}" class="form-field" th:object="${quotehelper}"
+                    <form action="#" th:action="@{/result/{page}(page=${quotehelper.initPage})}" class="form-field" th:object="${quotehelper}"
                           method="post">
 
                         <div class="shadow input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Number of quotes</span>
                             </div>
-                            <input id="numb" type="number" class="form-control" th:field="*{quoteNumber}">
+                            <input type="number" class="form-control" th:field="*{quoteNumber}">
                         </div>
 
+                        <!--
+                        <div class="shadow input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Elements per page</span>
+                            </div>
+                            <input type="number" class="form-control" th:field="*{elemPerPage}">
+                        </div>
+
+                        --->
+
                         <div class="validators rounded">
-                            <p th:if="${quotehelper.checkIfCorrect} == false">Number of quotes lower than 1 or higher than 200!</p>
+                            <p th:if="${quotehelper.correctParameters} == false">Incorrect arguments passed</p>
+                            <p th:if="${quotehelper.correctParameters} == false">Number of quotes field was out of range <1,200></p>
+                            <p th:if="${quotehelper.correctParameters} == false">OR</p>
+                            <p th:if="${quotehelper.correctParameters} == false">Elements per page field was was out of range <5,15></p>
                         </div>
 
                         <input class="shadow resultbutton btn" type="submit" value="Find quotes!"/>
@@ -52,28 +65,6 @@
                     </form>
                 </div>
             </div>
-        </div>
-        <div class="result-panel rounded shadow justify-content-center appnamedisplay row" th:if="${#lists.size(quotelist) >= 1}">
-            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
-            <div class="text-center col-sm-8 col-md-8 col-lg-8">
-                <div class="input-group text-center" th:each="bqoute: ${quotelist}">
-                    <div class="single-result Row">
-                        <div class="rounded Col MiddleCenter">
-                            <img class="rounded appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
-                        </div>
-                        <div class="quote-panel Col MiddleCenterValues">
-                            <p class="props-name">QUOTE</p>
-                            <p class="props-value" th:text="${bqoute.quote}"></p>
-                            <p class="props-name">AUTHOR</p>
-                            <p class="props-value" th:text="${bqoute.author}"></p>
-                        </div>
-
-                        <!-- https://www.sitepoint.com/jquery-pagination-plugins/ -->
-
-                    </div>
-                </div>
-            </div>
-            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
         </div>
     </div>
 </div>
