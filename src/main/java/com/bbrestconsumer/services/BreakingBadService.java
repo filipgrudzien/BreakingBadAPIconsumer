@@ -16,6 +16,8 @@ public class BreakingBadService {
 
     private final String basicURL = "https://breaking-bad-quotes.herokuapp.com/v1/quotes/";
 
+    private int pageSize = 0;
+
     private List<BreakingBadQuote> listForPagination;
 
     public String obtainDesiredURL(int quoteNumber) {
@@ -27,10 +29,13 @@ public class BreakingBadService {
         BreakingBadQuote[] response = restTemplate.getForObject(urlForRest, BreakingBadQuote[].class);
         ArrayList<BreakingBadQuote> arrayList = new ArrayList<BreakingBadQuote>(Arrays.asList(response));
         listForPagination = arrayList;
+        //this.currentServiceStateLogger();
     }
 
-    public Page<BreakingBadQuote> getPaginatedQuotes(Pageable pageable, int page, int elemPerPage) {
-        int pageSize = elemPerPage;
+    public Page<BreakingBadQuote> getPaginatedQuotes(int page) {
+
+        PageRequest pageable = PageRequest.of(page, this.pageSize);
+        int pageSize = this.pageSize;
         int currentPage = page;
         int startItem = currentPage * pageSize;
         List<BreakingBadQuote> list;
@@ -56,4 +61,26 @@ public class BreakingBadService {
         }
     }
 
+    public void resetPreviousSetup(){
+        this.pageSize = 0;
+        this.listForPagination = null;
+    }
+
+    public void setPageSize(int desiredPageSize){
+        this.pageSize = desiredPageSize;
+    }
+
+    public boolean checkIfPageSizeIsSet(){
+        if(this.pageSize == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public void currentServiceStateLogger(){
+        System.out.println("Current page size: " + this.pageSize);
+        System.out.println("Current rest result size: " + this.listForPagination.size());
+
+    }
 }

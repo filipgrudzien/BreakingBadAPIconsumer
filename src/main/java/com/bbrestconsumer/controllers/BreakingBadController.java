@@ -34,12 +34,11 @@ public class BreakingBadController {
     @RequestMapping(value = "/result/{page}")
     public ModelAndView showResultsFromAPI(@Valid QuoteHelper helper, Errors errors,
                                            @RequestParam(value="quoteNumber", required = false) Integer quoteNumber,
+                                           @RequestParam(value="elemPerPage", required = false) Integer elemPerPage,
                                            @PathVariable int page,
                                            Model model){
 
         ModelAndView mav = new ModelAndView();
-
-        int elemPerPage = 5; //hard-coded examle yet
 
         if(errors.hasErrors()){
             mav.setViewName("index");
@@ -48,12 +47,15 @@ public class BreakingBadController {
             return mav;
         }
 
+        if(!breakingBadService.checkIfPageSizeIsSet()){
+            breakingBadService.setPageSize(elemPerPage);
+        }
+
         if(!breakingBadService.checkIfDataRetrieved()){
             breakingBadService.retrieveRestData(restTemplate, quoteNumber);
         }
 
-        PageRequest pageable = PageRequest.of(page - 1, elemPerPage);
-        Page<BreakingBadQuote> quotePage = breakingBadService.getPaginatedQuotes(pageable, page-1, elemPerPage);
+        Page<BreakingBadQuote> quotePage = breakingBadService.getPaginatedQuotes(page-1);
 
         int totalPages = quotePage.getTotalPages();
         if(totalPages > 0) {

@@ -43,7 +43,6 @@
                             <input type="number" class="form-control" th:field="*{quoteNumber}">
                         </div>
 
-                        <!--
                         <div class="shadow input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Elements per page</span>
@@ -51,13 +50,11 @@
                             <input type="number" class="form-control" th:field="*{elemPerPage}">
                         </div>
 
-                        --->
-
-                        <div class="validators rounded">
-                            <p th:if="${quotehelper.correctParameters} == false">Incorrect arguments passed</p>
-                            <p th:if="${quotehelper.correctParameters} == false">Number of quotes field was out of range <1,200></p>
-                            <p th:if="${quotehelper.correctParameters} == false">OR</p>
-                            <p th:if="${quotehelper.correctParameters} == false">Elements per page field was was out of range <5,15></p>
+                        <div th:if="${quotehelper.correctParameters} == false" class="validators rounded">
+                            <p>Incorrect arguments passed</p>
+                            <p>Number of quotes field was out of expected range <1,200></p>
+                            <p>or</p>
+                            <p>Elements per page field was was out of expected range <5,15></p>
                         </div>
 
                         <input class="shadow resultbutton btn" type="submit" value="Find quotes!"/>
