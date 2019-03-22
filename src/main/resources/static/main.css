@@ -107,10 +107,22 @@
 
 .result-panel {
     background: #e9ecef;
-    padding: 0px 0px 15px 0px;
+    padding: 0px 0px 5px 0px;
     margin: 20px;
 }
 
 .single-result {
     margin: 10px 0px 0px 0px;
+}
+
+.spacer {
+    margin: 16px 0px 0px 0px !important;
+}
+
+ul {
+    margin: 0px 0px 5px 0px !important;
+}
+
+.resetbutton {
+    margin: 20px 0px 0px 0px;
 }

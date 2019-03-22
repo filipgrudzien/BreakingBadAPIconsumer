@@ -18,6 +18,26 @@
 
 <div id="wrap">
     <div id="main" class="container clear-top">
+        <div class="text-center row">
+            <div class="appimgdisplay col-sm-2 col-md-2 col-lg-2">
+                <img class="appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
+            </div>
+            <div class="appnamedisplay centred-content col-sm-8 col-md-8 col-lg-8">
+                <p class="appname">Breaking Bad Quotes</p>
+            </div>
+            <div class="appimgdisplay col-sm-2 col-md-2 col-lg-2">
+                <img class="appimg" src="https://images-na.ssl-images-amazon.com/images/I/618v1Ud9ZeL._SX425_.jpg">
+            </div>
+        </div>
+
+        <div class="text-center row">
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="resetbutton centred-content col-sm-8 col-md-8 col-lg-8">
+                <a type="button" th:href="@{/}" class="btn btn-warning">Reset browsing and get new quotes!</a>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+
         <div class="result-panel rounded shadow justify-content-center appnamedisplay row">
             <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
             <div class="text-center col-sm-8 col-md-8 col-lg-8">
@@ -34,19 +54,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
-        </div>
-        <div class="result-panel rounded shadow justify-content-center appnamedisplay row">
-            <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
-            <div class="text-center col-sm-8 col-md-8 col-lg-8">
-                <nav aria-label="Pagination">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
-                            <a class="page-link" th:href="@{|/result/${pageNumber}|}" th:text=${pageNumber}>1</a>
-                        </li>
-                    </ul>
-                </nav>
+                <div class="spacer">
+                    <nav aria-label="Pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                                <a class="pagelink page-link" th:href="@{|/result/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
             <div class="text-center offset-sm-2 offset-md-2 offset-lg-2"></div>
         </div>
